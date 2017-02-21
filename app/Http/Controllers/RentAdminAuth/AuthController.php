@@ -28,7 +28,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo   = '/renter/admin';
+    protected $redirectTo   = '/rent/admin';
     protected $guard        = 'rent_admin';
     protected $username     = 'username';
     /**

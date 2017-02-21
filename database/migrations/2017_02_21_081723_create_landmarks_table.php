@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRentAdminsTable extends Migration
+class CreateLandmarksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,15 +12,12 @@ class CreateRentAdminsTable extends Migration
      */
     public function up()
     {
-        Schema::create('rent_admins', function (Blueprint $table) {
+        Schema::create('landmarks', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('phone_number')->unique();
-            $table->string('address');
-            $table->string('username')->unique();
-            $table->string('password');
+            $table->string('name', 127);
+            $table->string('longitude', 127);
+            $table->string('latitude', 127);
             $table->tinyInteger('status')->default(1);
-            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ class CreateRentAdminsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('rent_admins');
+        Schema::drop('landmarks');
     }
 }

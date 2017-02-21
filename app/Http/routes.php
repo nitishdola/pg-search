@@ -40,7 +40,7 @@ Route::group(['middleware' => ['web']], function () {
     //Login Routes...
     Route::get('/rent/admin/login','RentAdminAuth\AuthController@showLoginForm');
     Route::post('/rent/admin/login','RentAdminAuth\AuthController@login');
-    Route::get('/rent/admin/logout','RentAdminAuth\AuthController@logout');
+    Route::get('/rent/admin/logout',['as' => 'rent_admin.logout' , 'uses' => 'RentAdminAuth\AuthController@logout']);
 
     // Registration Routes...
     Route::get('rent/admin/register', 'RentAdminAuth\AuthController@showRegistrationForm');
@@ -50,5 +50,20 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('rent/admin/password/reset','RentAdminAuth\PasswordController@reset');
     Route::get('rent/admin/password/reset/{token?}','RentAdminAuth\PasswordController@showResetForm');
 
-    Route::get('/rent/admin', 'RentAdminAuth@index');
+    Route::get('/rent/admin', ['as' => 'owner.home', 'uses' => 'RentAdminController@index']);
 });  
+
+Route::group(['prefix'=>'pg-location'], function() {
+    
+    Route::get('/add', [
+        'as' => 'pg_location.add',
+        'middleware' => ['rent_admin'],
+        'uses' => 'PgLocationsController@create'
+    ]);
+
+    Route::post('/add', [
+        'as' => 'pg_location.add_post',
+        'middleware' => ['rent_admin'],
+        'uses' => 'UsersController@doCreate'
+    ]);
+});

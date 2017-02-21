@@ -6,9 +6,10 @@
 <html lang="en">
     <!--<![endif]-->
     <!-- BEGIN HEAD -->
+
     <head>
         <meta charset="utf-8" />
-        <title>PG Search | Owner Login</title>
+        <title>PG Search | Owner Dashboard</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="" name="description" />
@@ -29,24 +30,89 @@
         <link href="{{ asset('assets/admin/global/css/components.min.css') }}" rel="stylesheet" id="style_components" type="text/css" />
         <link href="{{ asset('assets/admin/global/css/plugins.min.css') }}" rel="stylesheet" type="text/css" />
 
-
-        <link href="{{ asset('assets/admin/pages/css/login-2.css') }}" rel="stylesheet" type="text/css" />
+        <!-- END THEME GLOBAL STYLES -->
+        <!-- BEGIN THEME LAYOUT STYLES -->
+        <link href="{{ asset('assets/admin/layouts/layout/css/layout.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets/admin/layouts/layout/css/themes/darkblue.min.css') }}" rel="stylesheet" type="text/css" id="style_color" />
+        <link href="{{ asset('assets/admin/layouts/layout/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
         <!-- END THEME LAYOUT STYLES -->
         <link rel="shortcut icon" href="favicon.ico" /> </head>
     <!-- END HEAD -->
 
-    <body class=" login">
-        <!-- BEGIN LOGO -->
-        <div class="logo">
-            
+    <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
+        <div class="page-wrapper">
+            <!-- BEGIN HEADER -->
+            <div class="page-header navbar navbar-fixed-top">
+                <!-- BEGIN HEADER INNER -->
+                <div class="page-header-inner ">
+                    <!-- BEGIN LOGO -->
+                    <div class="page-logo">
+                        <h4 class="sidebar-header">{{ getOwnerInfo(Auth::guard('rent_admin')->user()->id)->name }}</h4>
+                        <div class="menu-toggler sidebar-toggler">
+                            <span></span>
+                        </div>
+                    </div>
+                    <!-- END LOGO -->
+                    <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+                    <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span></span>
+                    </a>
+                    <!-- END RESPONSIVE MENU TOGGLER -->
+                    <!-- BEGIN TOP NAVIGATION MENU -->
+                    <div class="top-menu">
+                        @include('layouts.common.owners.top_nav')
+                    </div>
+                    <!-- END TOP NAVIGATION MENU -->
+                </div>
+                <!-- END HEADER INNER -->
+            </div>
+            <!-- END HEADER -->
+            <!-- BEGIN HEADER & CONTENT DIVIDER -->
+            <div class="clearfix"> </div>
+            <!-- END HEADER & CONTENT DIVIDER -->
+            <!-- BEGIN CONTAINER -->
+            <div class="page-container">
+                <!-- BEGIN SIDEBAR -->
+                @include('layouts.common.owners.sidebar_nav')
+                <!-- END SIDEBAR -->
+                <!-- BEGIN CONTENT -->
+                <div class="page-content-wrapper">
+                    <!-- BEGIN CONTENT BODY -->
+                    <div class="page-content">
+                        <!-- BEGIN PAGE HEADER-->
+                        <!-- BEGIN PAGE BAR -->
+                        <div class="page-bar">
+                            <ul class="page-breadcrumb">
+                                @yield('breadCumb')
+                            </ul>
+                        </div>
+                        <!-- END PAGE BAR -->
+                        <!-- BEGIN PAGE TITLE-->
+                        <h1 class="page-title"> @yield('pageHeadTitle')
+                            <small>@yield('pageHeadSubTitle')</small>
+                        </h1>
+                        <!-- END PAGE TITLE-->
+                        <!-- END PAGE HEADER-->
+                        <!-- BEGIN DASHBOARD STATS 1-->
+                        @yield('content')
+                    </div>
+                    <!-- END CONTENT BODY -->
+                </div>
+                <!-- END CONTENT -->
+                
+            </div>
+            <!-- END CONTAINER -->
+            <!-- BEGIN FOOTER -->
+            <div class="page-footer">
+                <div class="page-footer-inner"> 2017 &copy; Developed at
+                    <a target="_blank" href="http://keenthemes.com">WebCom</a>
+                </div>
+                <div class="scroll-to-top">
+                    <i class="icon-arrow-up"></i>
+                </div>
+            </div>
+            <!-- END FOOTER -->
         </div>
-        <!-- END LOGO -->
-        <!-- BEGIN LOGIN -->
-        <div class="content">
-            @yield('content')
-        </div>
-        <div class="copyright hide"> {{ date('Y')}} © Webcom. </div>
-        <!-- END LOGIN -->
         <!--[if lt IE 9]>
 <script src="../assets/global/plugins/respond.min.js"></script>
 <script src="../assets/global/plugins/excanvas.min.js"></script> 
@@ -67,18 +133,5 @@
         <script src="{{ asset('assets/admin/layouts/layout/scripts/demo.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('assets/admin/layouts/global/scripts/quick-sidebar.min.js') }}" type="text/javascript"></script>
         <!-- END THEME LAYOUT SCRIPTS -->
-
-        <script>
-            $('#tnc').click(function () {
-                //check if checkbox is checked
-                if ($(this).is(':checked')) {
-
-                    $('#register-submit-btn').removeAttr('disabled'); //enable input
-
-                } else {
-                    $('#register-submit-btn').attr('disabled', true); //disable input
-                }
-            });
-    </script>
     </body>
 </html>

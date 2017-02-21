@@ -48,19 +48,19 @@ Login page
 
 .login .content .form-control {
   border: none;
-  background-color: #6ba3c8;
+  background-color: #ffffff;
   border: 1px solid #6ba3c8;
   height: 43px;
-  color: #d9ecf9; }
+  color: #4D4D4D; }
   .login .content .form-control:focus, .login .content .form-control:active {
-    border: 1px solid #83b8db; }
+    border: 1px solid #999; }
   .login .content .form-control::-moz-placeholder {
-    color: #d9ecf9;
+    color: #BEBEBE;
     opacity: 1; }
   .login .content .form-control:-ms-input-placeholder {
-    color: #d9ecf9; }
+    color: #BEBEBE; }
   .login .content .form-control::-webkit-input-placeholder {
-    color: #d9ecf9; }
+    color: #BEBEBE; }
 
 .login .content select.form-control {
   padding-left: 9px;
@@ -70,7 +70,8 @@ Login page
   display: none; }
 
 .login .content .register-form {
-  display: none; }
+  /*display: none; */
+}
 
 .login .content .form-title {
   font-weight: 300;

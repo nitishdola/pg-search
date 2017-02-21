@@ -1,66 +1,37 @@
-@extends('layouts.app')
+@extends('layouts.admin_auth')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Rent Admin Login</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/login') }}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Username</label>
-
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" name="username" value="{{ old('username') }}">
-
-                                @if ($errors->has('username'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('username') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input type="password" class="form-control" name="password">
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember"> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-sign-in"></i>Login
-                                </button>
-
-                                <a class="btn btn-link" href="{{ url('admin/password/reset') }}">Forgot Your Password?</a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+<form class="login-form" action="{{ url('/rent/admin/login') }}" method="post">
+{{ csrf_field() }}
+    <div class="form-title">
+        <span class="form-title">OWNER'S LOGIN.</span>
     </div>
-</div>
-@endsection
+    <div class="alert alert-danger display-hide">
+        <button class="close" data-close="alert"></button>
+        <span> Enter your username and password. </span>
+    </div>
+    <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}"">
+        <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+        <label class="control-label visible-ie8 visible-ie9">Username</label>
+        <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="username" /> 
+        @if ($errors->has('username'))
+            <span class="help-block">
+                <strong>{{ $errors->first('username') }}</strong>
+            </span>
+        @endif
+    </div>
+    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}"">
+        <label class="control-label visible-ie8 visible-ie9">Password</label>
+        <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password" /> 
+        @if ($errors->has('password'))
+            <span class="help-block">
+                <strong>{{ $errors->first('password') }}</strong>
+            </span>
+        @endif
+    </div>
+    <div class="form-actions">
+        <button type="submit" class="btn red btn-block uppercase">Login</button>
+    </div>
+    
+</form>
+@stop

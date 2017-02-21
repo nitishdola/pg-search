@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRentAdminsTable extends Migration
+class CreatePgLocationAmenitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,16 +12,15 @@ class CreateRentAdminsTable extends Migration
      */
     public function up()
     {
-        Schema::create('rent_admins', function (Blueprint $table) {
+        Schema::create('pg_location_amenities', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('phone_number')->unique();
-            $table->string('address');
-            $table->string('username')->unique();
-            $table->string('password');
+            $table->integer('pg_location_id', false, true);
+            $table->integer('amenity_id', false, true);
             $table->tinyInteger('status')->default(1);
-            $table->rememberToken();
             $table->timestamps();
+
+            $table->foreign('pg_location_id')->references('id')->on('pg_locations');
+            $table->foreign('amenity_id')->references('id')->on('amenities');
         });
     }
 
@@ -32,6 +31,6 @@ class CreateRentAdminsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('rent_admins');
+        Schema::drop('pg_location_amenities');
     }
 }

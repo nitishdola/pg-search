@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-
+use Illuminate\Support\Facades\Auth;
 class RedirectIfNotRentAdmin
 {
     /**
@@ -16,7 +16,7 @@ class RedirectIfNotRentAdmin
     public function handle($request, Closure $next, $guard = 'rent_admin')
     {
         if (!Auth::guard($guard)->check()) {
-            return redirect('/');
+            return redirect('/rent/admin/login');
         }
         return $next($request);
     }
