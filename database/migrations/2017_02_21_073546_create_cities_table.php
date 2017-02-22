@@ -12,7 +12,7 @@ class CreateDistrictsTable extends Migration
      */
     public function up()
     {
-        Schema::create('districts', function (Blueprint $table) {
+        Schema::create('cities', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 127);
             $table->integer('state_id', false, true);
@@ -30,6 +30,6 @@ class CreateDistrictsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('districts');
+        Schema::drop('cities');
     }
 }

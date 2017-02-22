@@ -67,3 +67,16 @@ Route::group(['prefix'=>'pg-location'], function() {
         'uses' => 'UsersController@doCreate'
     ]);
 });
+
+Route::group(['prefix'=>'rest'], function() {
+    
+    Route::get('/get-cities', [
+        'as' => 'rest.get_cities',
+        'uses' => 'RESTController@getAllCities'
+    ]);
+
+    Route::get('/landmark/get-info', [
+        'as' => 'rest.get_landmark_info',
+        'uses' => 'RESTController@getLandmarkInfo'
+    ]);
+});
