@@ -25,7 +25,7 @@
     <div class="form-group {{ $errors->has('city_id') ? 'has-error' : ''}}">
       {!! Form::label('city_idl', 'City', array('class' => 'col-md-3 control-label')) !!}
       <div class="col-md-9">
-        <select id="cities" class="form-control"></select> 
+        <select id="cities" name="city_id" class="form-control"></select> 
       </div>
       {!! $errors->first('city_id', '<span class="help-inline">:message</span>') !!}
     </div>
@@ -33,7 +33,7 @@
     <div class="form-group {{ $errors->has('landmark_id') ? 'has-error' : ''}}">
       {!! Form::label('landmark_id', 'Nearby Landmark', array('class' => 'col-md-3 control-label')) !!}
       <div class="col-md-9">
-        {!! Form::select('landmark_id', $landmarks, null, ['class' => 'select2 col-md-5', 'id' => 'landmark_id', 'placeholder' => 'Select Landmark', 'required' => 'true']) !!}
+        {!! Form::select('landmark_id', $landmarks, null, ['class' => 'select2 col-md-8', 'id' => 'landmark_id', 'placeholder' => 'Select Landmark', 'required' => 'true']) !!}
       </div>
       {!! $errors->first('landmark_id', '<span class="help-inline">:message</span>') !!}
     </div> 
@@ -63,16 +63,9 @@
     <input type="hidden" id="landlat" name="landlat">
     <input type="hidden" id="landlong" name="landlong">
 </div>
-
-<div class="col-md-7">
-    <div class="form-group {{ $errors->has('address') ? 'has-error' : ''}}">
-      {!! Form::label('address', 'Address', array('class' => 'col-md-3 control-label')) !!}
-      <div class="col-md-9">
-        {!! Form::textarea('address', null, ['class' => 'form-control', 'id' => 'address', 'rows' => 3, 'placeholder' => 'Address', 'required' => 'true']) !!}
-      </div>
-      {!! $errors->first('address', '<span class="help-inline">:message</span>') !!}
-    </div>
-</div>
 <div class="clearfix"></div>
+
+
+
 
 

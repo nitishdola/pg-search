@@ -4,22 +4,73 @@
 <div class="row">
     <div class="col-md-12">
         <!-- BEGIN SAMPLE FORM PORTLET-->
-        <div class="portlet light bordered">
-            <div class="portlet-title">
-                <div class="caption font-red-sunglo">
-                    <i class="fa fa-map-marker font-red-sunglo"></i>
-                    <span class="caption-subject bold uppercase"> ADD PG LOCATION</span>
+        
+            {!! Form::open(array('route' => 'pg_location.add_post', 'id' => 'pg_location.add_post', 'class' => 'form-horizontal row-border', 'files' => true)) !!}
+            <div class="portlet light bordered">
+                <div class="portlet-title">
+                    <div class="caption font-red-sunglo">
+                        <i class="fa fa-map-marker font-red-sunglo"></i>
+                        <span class="caption-subject bold uppercase">PG LOCATION</span>
+                    </div>
                 </div>
-            </div>
-            <div class="portlet-body form">
-                {!! Form::open(array('route' => 'pg_location.add_post', 'id' => 'pg_location.add_post', 'class' => 'form-horizontal row-border')) !!}
+                <div class="portlet-body form">
                     <div class="form-body">
                         @include('rent_admin.pg_locations._create')
-                        <label class="col-md-3"></label>
-                        <button type="submit" class="btn btn-success btn-lg">ADD</button>
                     </div>
-                {!! Form::close() !!}
+                </div>
             </div>
+            <div class="clearfix"></div>
+            <div class="portlet light bordered">
+                <div class="portlet-title">
+                    <div class="caption font-red-sunglo">
+                        <i class="fa fa-wifi font-red-sunglo"></i>
+                        <span class="caption-subject bold uppercase"> PG AMMENITIES</span>
+                    </div>
+                </div>
+                <div class="portlet-body form">
+                    <div class="form-body">
+                        @include('rent_admin.pg_locations._amenities')
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="clearfix"></div>
+            <div class="portlet light bordered">
+                <div class="portlet-title">
+                    <div class="caption font-red-sunglo">
+                        <i class="fa fa-building font-red-sunglo"></i>
+                        <span class="caption-subject bold uppercase"> PG ROOMS</span>
+                    </div>
+                </div>
+                <div class="portlet-body form">
+                    <div class="form-body">
+                        @include('rent_admin.pg_locations._rooms')
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="clearfix"></div>
+            <div class="portlet light bordered">
+                <div class="portlet-title">
+                    <div class="caption font-red-sunglo">
+                        <i class="fa fa-picture-o font-red-sunglo"></i>
+                        <span class="caption-subject bold uppercase"> PG PHOTOS</span>
+                    </div>
+                </div>
+                <div class="portlet-body form">
+                    <div class="form-body">
+                        @include('rent_admin.pg_locations._images')
+                    </div>
+                </div>
+            </div>
+            
+            <label class="col-md-3"></label>
+            <div class="col-md-9">
+                <button type="submit" class="btn btn-success btn-lg">ADD</button>
+            </div>
+            {!! Form::close() !!}
         </div>
     </div>
 </div>
@@ -152,6 +203,57 @@ function initMap() {
         document.getElementById("longitude").value = this.getPosition().lng();
     });
   }
+item = 4;
+$('#addmoreroom').click(function(e) {
+    $latest_rm      = $('.roomspg:last');
+    $clone          = $latest_rm.clone(true, true);
+    $latest_rm.after($clone);// console.log($clone.html());
+
+    item++;
+    show_hide_item(item);
+});
+
+$('#removeroom').click(function(e) {
+    item--;
+    $latest_rm.remove();
+    e.preventDefault();
+    show_hide_item(item);
+});
+
+function show_hide_item( item ) {
+    if(item > 4) {
+        $('#removeroom').show();
+    }else{
+        $('#removeroom').hide();
+    }
+}
+
+//image
+image = 4;
+$('#addmorepic').click(function(e) {
+    $latest_img      = $('.imagepg:last');
+    $clone          = $latest_img.clone(true, true);
+    $latest_img.after($clone);// console.log($clone.html());
+
+    image++;
+    show_hide_img(image);
+});
+
+$('#removepic').click(function(e) {
+    image--;
+    $latest_img.remove();
+    e.preventDefault();
+    show_hide_img(image);
+});
+
+function show_hide_img( image ) {
+    if(image > 4) {
+        $('#removepic').show();
+    }else{
+        $('#removepic').hide();
+    }
+}
+
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNxsOeBacT6ocUv3oNtWlqfOa5yuVggbY&libraries=places&callback=initMap">
 </script>
@@ -232,6 +334,41 @@ padding: 6px 12px;
 }
 #target {
 width: 345px;
+}
+
+/* Hiding the checkbox, but allowing it to be focused */
+.badgebox
+{
+    opacity: 0;
+}
+
+.badgebox + .badge
+{
+    /* Move the check mark away when unchecked */
+    text-indent: -999999px;
+    /* Makes the badge's width stay the same checked and unchecked */
+    width: 27px;
+}
+
+.badgebox:focus + .badge
+{
+    /* Set something to make the badge looks focused */
+    /* This really depends on the application, in my case it was: */
+    
+    /* Adding a light border */
+    box-shadow: inset 0px 0px 5px;
+    /* Taking the difference out of the padding */
+}
+
+.badgebox:checked + .badge
+{
+    /* Move the check mark back when checked */
+    text-indent: 0;
+}
+.roomspg {
+    margin-bottom: 10px;
+    background: #f7f7f7;
+    padding: 5px;
 }
 </style>
 @stop

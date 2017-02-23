@@ -24,7 +24,7 @@ Route::group(['middleware' => ['web']], function () {
     //Login Routes...
     Route::get('/admin/login','AdminAuth\AuthController@showLoginForm');
     Route::post('/admin/login','AdminAuth\AuthController@login');
-    Route::get('/admin/logout','AdminAuth\AuthController@logout');
+    Route::get('/admin/logout', ['as' => 'admin.logout', 'uses' => 'AdminAuth\AuthController@logout']);
 
     // Registration Routes...
     Route::get('admin/register', 'AdminAuth\AuthController@showRegistrationForm');
@@ -34,7 +34,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('admin/password/reset','AdminAuth\PasswordController@reset');
     Route::get('admin/password/reset/{token?}','AdminAuth\PasswordController@showResetForm');
 
-    Route::get('/admin', 'AdminController@index');
+    Route::get('/admin', ['as' => 'admin.home', 'uses' => 'AdminController@index']);
 
     //Rent Admin
     //Login Routes...
@@ -53,6 +53,26 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/rent/admin', ['as' => 'owner.home', 'uses' => 'RentAdminController@index']);
 });  
 
+Route::group(['prefix'=>'master'], function() {
+    Route::get('/landmark/add', [
+        'as' => 'master.landmark.add',
+        'middleware' => ['admin'],
+        'uses' => 'LandmarksController@create'
+    ]);
+
+    Route::post('/landmark/add', [
+        'as' => 'master.landmark.add.post',
+        'middleware' => ['admin'],
+        'uses' => 'LandmarksController@doCreate'
+    ]);
+
+    Route::get('/landmark/list-all', [
+        'as' => 'landmark.index',
+        'middleware' => ['admin'],
+        'uses' => 'LandmarksController@index'
+    ]);
+});
+
 Route::group(['prefix'=>'pg-location'], function() {
     
     Route::get('/add', [
@@ -64,7 +84,7 @@ Route::group(['prefix'=>'pg-location'], function() {
     Route::post('/add', [
         'as' => 'pg_location.add_post',
         'middleware' => ['rent_admin'],
-        'uses' => 'UsersController@doCreate'
+        'uses' => 'PgLocationsController@doCreate'
     ]);
 });
 

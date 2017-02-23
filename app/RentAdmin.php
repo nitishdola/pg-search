@@ -12,7 +12,7 @@ class RentAdmin extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'username', 'password',
+        'name', 'phone_number', 'address', 'username', 'password',
     ];
 
     /**
