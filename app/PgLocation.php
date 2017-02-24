@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PgLocation extends Model
 {
-    protected $fillable = array('rent_admin_id', 'longitude','latitude', 'landmark_id','address', 'pin','city_id', 'state_id');
+    protected $fillable = array('rent_admin_id', 'longitude','latitude', 'landmark_id','address', 'pin','city_id', 'state_id', 'rules');
 	protected $table    = 'pg_locations';
     protected $guarded  = ['_token'];
 

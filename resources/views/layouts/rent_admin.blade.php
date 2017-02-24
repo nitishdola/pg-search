@@ -33,7 +33,7 @@
         <link href="{{ asset('assets/admin/global/plugins/jqvmap/jqvmap/jqvmap.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('assets/admin/global/css/components.min.css') }}" rel="stylesheet" id="style_components" type="text/css" />
         <link href="{{ asset('assets/admin/global/css/plugins.min.css') }}" rel="stylesheet" type="text/css" />
-
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">
         <!-- END THEME GLOBAL STYLES -->
         <!-- BEGIN THEME LAYOUT STYLES -->
         <link href="{{ asset('assets/admin/layouts/layout/css/layout.min.css') }}" rel="stylesheet" type="text/css" />
@@ -137,9 +137,12 @@
         <script src="{{ asset('assets/admin/layouts/layout/scripts/demo.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('assets/admin/layouts/global/scripts/quick-sidebar.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('assets/admin/global/plugins/select2/js/select2.full.min.js') }}" type="text/javascript"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>
         
+
         <!-- END THEME LAYOUT SCRIPTS -->
         <script>
+            $('#summertext').summernote();
             $(".select2").select2();
         </script>
         @yield('pageScript')

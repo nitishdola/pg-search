@@ -65,6 +65,21 @@
                     </div>
                 </div>
             </div>
+
+            <div class="clearfix"></div>
+            <div class="portlet light bordered">
+                <div class="portlet-title">
+                    <div class="caption font-red-sunglo">
+                        <i class="fa fa-ban font-red-sunglo"></i>
+                        <span class="caption-subject bold uppercase"> PG RULES</span>
+                    </div>
+                </div>
+                <div class="portlet-body form">
+                    <div class="form-body">
+                        @include('rent_admin.pg_locations._rules')
+                    </div>
+                </div>
+            </div>
             
             <label class="col-md-3"></label>
             <div class="col-md-9">
