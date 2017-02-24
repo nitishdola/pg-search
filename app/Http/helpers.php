@@ -13,7 +13,7 @@ function getOwnerInfo($owner_id = null) {
 	}
 }
 
-public function checkIfWithinRadius() {
+function checkIfWithinRadius() {
     if((isset($_REQUEST['base_lat']) && $_REQUEST['base_long'] != '') && ( isset($_REQUEST['target_lat']) && $_REQUEST['larget_long'] != '' )) {
         
         $lat1   = $_REQUEST['lat_1'];
