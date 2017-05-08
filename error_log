@@ -1,0 +1,8 @@
+[11-Mar-2017 04:29:27 UTC] PHP Fatal error:  Class 'App\Deal' not found in /home/enrollspace/public_html/pgsearchfiles/app/Http/Controllers/HomeController.php on line 29
+[10-Apr-2017 06:29:49 UTC] PHP Fatal error:  Call to a member function isValid() on null in /home/enrollspace/public_html/pgsearchfiles/app/Http/Controllers/PgLocationsController.php on line 69
+[10-Apr-2017 06:32:44 UTC] PHP Fatal error:  Call to a member function isValid() on null in /home/enrollspace/public_html/pgsearchfiles/app/Http/Controllers/PgLocationsController.php on line 69
+[10-Apr-2017 07:55:23 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Input' not found in /home/enrollspace/public_html/pgsearchfiles/app/Http/Controllers/PgLocationsController.php on line 24
+[10-Apr-2017 07:55:43 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Storage' not found in /home/enrollspace/public_html/pgsearchfiles/app/Http/Controllers/PgLocationsController.php on line 28
+[10-Apr-2017 07:56:52 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Storage' not found in /home/enrollspace/public_html/pgsearchfiles/app/Http/Controllers/PgLocationsController.php on line 28
+[10-Apr-2017 10:07:48 UTC] PHP Parse error:  syntax error, unexpected 'endif' (T_ENDIF) in /home/enrollspace/public_html/pgsearchfiles/app/Http/Controllers/PgLocationsController.php on line 35
+[10-Apr-2017 10:08:16 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/enrollspace/public_html/pgsearchfiles/app/Http/Controllers/PgLocationsController.php on line 34
